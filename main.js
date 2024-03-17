@@ -31,6 +31,22 @@ var particlesSky = [];
 var particleDistanceTop = 10;
 
 //---
+function gotoPage(pageNumber) {
+  // pause the music
+  audio.pause();
+
+  // Hide all pages
+  var pages = document.querySelectorAll('.page');
+  pages.forEach(function (page) {
+    page.classList.remove('on');
+  });
+
+  // Show the selected page
+  var selectedPage = document.getElementById('page' + pageNumber);
+  if (selectedPage) {
+    selectedPage.classList.add('on');
+  }
+}
 
 function init() {
   canvas = document.createElement('canvas');
@@ -45,6 +61,8 @@ function init() {
   context = canvas.getContext('2d');
 
   window.addEventListener('resize', onResize);
+
+  window.gotoPage = gotoPage;
 
   onResize();
 
@@ -466,3 +484,5 @@ window.requestAnimFrame = (function () {
 })();
 
 init();
+
+// Visualisation Page 2 -- code

@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>title</title>
-    <script type="module" src="/main.js"></script>
+    <script defer type="module" src="/main.js"></script>
   </head>
   <body>
     <!-- Buttons to switch pages -->
@@ -13,7 +13,7 @@
     <button class="pageswitch" onclick="gotoPage(2)">Page 2</button>
     <button class="pageswitch" onclick="gotoPage(3)">Page 3</button>
     <button class="pageswitch" onclick="gotoPage(4)">Page 4</button>
-
+    
     <!-- Page 1 -->
     <div id="page1" class="page on">
       <p>
@@ -42,21 +42,5 @@
       <h1>Page 4</h1>
       <p>This is the content of Page 4.</p>
     </div>
-
-    <script>
-      function gotoPage(pageNumber) {
-        // Hide all pages
-        var pages = document.querySelectorAll('.page');
-        pages.forEach(function (page) {
-          page.classList.remove('on');
-        });
-
-        // Show the selected page
-        var selectedPage = document.getElementById('page' + pageNumber);
-        if (selectedPage) {
-          selectedPage.classList.add('on');
-        }
-      }
-    </script>
   </body>
 </html>
