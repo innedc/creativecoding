@@ -9,3 +9,27 @@ body {
   overflow: hidden;
   background-color: #000;
 }
+
+#music {
+  position: relative;
+  z-index: 1;
+}
+canvas {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.pageswitch {
+  color: #ffffff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr 4fr;
+  width: 200px;
+  left: 2%;
+  top: 2%;
+  position: absolute;
+}

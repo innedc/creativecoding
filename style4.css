@@ -74,5 +74,13 @@ body {
 }
 
 .pageswitch {
-  left: 50%;
+  color: #ffffff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr 4fr;
+  width: 200px;
+  left: 2%;
+  top: 2%;
 }
