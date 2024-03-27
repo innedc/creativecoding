@@ -4,6 +4,7 @@ div {
   margin: 0;
   padding: 0;
   border: 0;
+  background-color: #000;
 }
 body {
   overflow: hidden;
@@ -13,17 +14,20 @@ body {
   color: #ffffff;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 4fr 4fr 4fr 4fr;
-  width: 200px;
-  left: 2%;
-  top: 2%;
-  position: absolute;
-}
 canvas {
-  top: 0;
-  left: 0;
+  display: block;
+}
+
+.call-to-action {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  cursor: pointer;
+}
+
+.achter {
   width: 100vw;
   height: 100vh;
 }

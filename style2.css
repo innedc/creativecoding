@@ -4,6 +4,7 @@ div {
   margin: 0;
   padding: 0;
   border: 0;
+  background-color: #000;
 }
 body {
   overflow: hidden;
@@ -26,7 +27,7 @@ canvas {
 }
 
 .grid {
-  display: grid;
+  display: none;
   grid-template-columns: 4fr 4fr 4fr 4fr;
   width: 200px;
   left: 2%;
