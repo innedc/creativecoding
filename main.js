@@ -87,7 +87,7 @@ function userStart() {
 
 function audioSetup() {
   audio = new Audio();
-  audio.src = '../Muziek/test.mp3';
+  audio.src = '../Muziek/test2.mp3';
   audio.controls = false;
   audio.loop = true;
   audio.autoplay = true;

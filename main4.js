@@ -38,6 +38,9 @@ function init() {
 
   btStart = document.getElementById('btStartAudioVisualization');
   btStart.addEventListener('mousedown', userStart, false);
+
+  // Automatically start the audio visualization when the page loads
+  userStart();
 }
 
 function userStart() {
@@ -49,7 +52,7 @@ function userStart() {
 
 function audioSetup() {
   audio = new Audio();
-  audio.src = '../Muziek/test3.mp3';
+  audio.src = '../Muziek/test2.mp3';
   audio.controls = false;
   audio.loop = true;
   audio.autoplay = true;
