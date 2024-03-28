@@ -181,7 +181,7 @@ function addParticle(x, y, z, audioBufferIndex) {
 
 function addParticles() {
   var audioBufferIndexMin = 20;
-  var audioBufferIndexMax = 100;
+  var audioBufferIndexMax = 60;
   var audioBufferIndex = audioBufferIndexMin;
 
   var centerPosition = { x: 0, y: 0 };

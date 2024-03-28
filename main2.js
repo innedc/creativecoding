@@ -89,8 +89,8 @@ let loop = function (timeStamp = performance.now()) {
     y += value / 60;
 
     // Distort animation
-    x += Math.cos(frame / 40 + y / 5);
-    y += Math.sin(frame / 40 + z / 3);
+    x += Math.cos(frame / 60 + y / 5);
+    y += Math.sin(frame / 60 + z / 3);
 
     // Make perspective
     x /= z / canvas.height / 2;
@@ -107,30 +107,23 @@ let loop = function (timeStamp = performance.now()) {
 };
 
 // Connecting analyser to audio
-window.addEventListener(
-  'click',
-  (e) => {
-    audio.src = '../Muziek/test2.mp3';
+audio.src = '../Muziek/test2.mp3';
+audio.oncanplaythrough = function () {
+  ac = new AudioContext();
+  sr = ac.createMediaElementSource(audio);
+  an = ac.createAnalyser();
 
-    audio.oncanplaythrough = function () {
-      ac = new AudioContext();
-      sr = ac.createMediaElementSource(audio);
-      an = ac.createAnalyser();
+  spectrumData = new Uint8Array(an.frequencyBinCount);
 
-      spectrumData = new Uint8Array(an.frequencyBinCount);
+  // Setting analyser
+  an.fftSize = 128;
+  an.smoothingTimeConstant = 0.9;
 
-      // Setting analyser
-      an.fftSize = 128;
-      an.smoothingTimeConstant = 0.9;
+  sr.connect(an);
+  an.connect(ac.destination);
 
-      sr.connect(an);
-      an.connect(ac.destination);
-
-      audio.play();
-    };
-  },
-  { once: true },
-);
+  audio.play();
+};
 
 for (let i = 0; i < cubeSize ** 3; i++) {
   let x = i % cubeSize;

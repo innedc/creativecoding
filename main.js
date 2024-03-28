@@ -2,8 +2,6 @@ import './style.css';
 var audio, audioContext, audioSrc;
 var analyser, analyserBufferLength;
 
-//---
-
 var w;
 var h;
 
