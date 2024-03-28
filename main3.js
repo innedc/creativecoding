@@ -178,7 +178,7 @@ function update(dt) {
     // get the audio data and make it go from 0 to 1
     audioValue = audioDataArrayL[audioIndex] / 255;
 
-    pointsUp[i].dist = 1.1 + audioValue * 0.8;
+    pointsUp[i].dist = 1.1 + audioValue * 2;
     pointsUp[i].x =
       centerX +
       radius *
@@ -195,7 +195,7 @@ function update(dt) {
     // get the audio data and make it go from 0 to 1
     audioValue = audioDataArrayR[audioIndex] / 255;
 
-    pointsDown[i].dist = 0.9 + audioValue * 0.2;
+    pointsDown[i].dist = 0.9 + audioValue * 4;
     pointsDown[i].x =
       centerX +
       radius *
