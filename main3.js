@@ -224,3 +224,8 @@ function draw(dt) {
 }
 
 draw();
+
+document.addEventListener('DOMContentLoaded', function () {
+  loadAudio();
+  toggleAudio(); // Start playing audio automatically
+});
