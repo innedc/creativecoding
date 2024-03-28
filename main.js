@@ -60,8 +60,8 @@ function init() {
 
   onResize();
 
-  addParticles(particles, 20);
-  addParticles(particlesSky, -20);
+  addParticles(particles, 80);
+  addParticles(particlesSky, -80);
 
   render();
   render();
