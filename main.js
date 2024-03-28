@@ -50,10 +50,6 @@ function gotoPage(pageNumber) {
 
 function init() {
   canvas = document.createElement('canvas');
-  canvas.addEventListener('mousedown', mouseDownHandler, false); /*
-  canvas.addEventListener('mousemove', mouseMoveHandler, false);
-  canvas.addEventListener('mouseenter', mouseEnterHandler, false);
-  canvas.addEventListener('mouseleave', mouseLeaveHandler, false); */
 
   var canvasContainer = document.getElementById('canvasContainer');
   canvasContainer.appendChild(canvas);
@@ -80,8 +76,6 @@ function init() {
   // Start the visualization automatically when the file loads
   userStart();
 }
-
-//---
 
 function userStart() {
   btStart.removeEventListener('mousedown', userStart);
@@ -194,9 +188,9 @@ function addParticles(array, dir) {
       var yPos = 0;
 
       if (dir > 0) {
-        yPos = Math.random() * 5 + particleDistanceTop;
+        yPos = Math.random() * 10 + particleDistanceTop;
       } else {
-        yPos = Math.random() * 5 - particleDistanceTop;
+        yPos = Math.random() * 10 - particleDistanceTop;
       }
 
       var particle = addParticle(x, yPos, z, audioBufferIndex);
