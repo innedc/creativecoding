@@ -76,6 +76,9 @@ function init() {
 
   btStart = document.getElementById('btStartAudioVisualization');
   btStart.addEventListener('mousedown', userStart, false);
+
+  // Start the visualization automatically when the file loads
+  userStart();
 }
 
 //---
@@ -423,12 +426,6 @@ function render() {
       if (i > 0 && i < l - 1) {
         var pB = particlesRowBack[j];
 
-        // v1 = { x:particle.x2d | 0, y:particle.y2d | 0 };
-        // v2 = { x:pB.x2d | 0, y:pB.y2d | 0 };
-
-        //var lineColorValue = Math.round( ( ( i - ( fov / 5 ) ) / l ) * 255 );
-
-        //drawLine( v1, v2, lineColorValue, lineColorValue, lineColorValue, 255 );
         drawLine(
           particle.x2d | 0,
           particle.y2d | 0,
@@ -485,4 +482,4 @@ window.requestAnimFrame = (function () {
 
 init();
 
-// Visualisation Page 2 -- code
+audio.play();

@@ -251,6 +251,16 @@ function audioBtHandler(event) {
   }
 }
 
+var colors = [
+  [255, 0, 0], // Red
+  [255, 165, 0], // Orange
+  [255, 255, 0], // Yellow
+];
+
+function getRandomColor() {
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
 function render() {
   var frequencySource;
   if (analyser) {
@@ -284,16 +294,16 @@ function render() {
 
       if (j > 0) {
         var p = particlesRow[j - 1];
-        var lineColorValue = Math.round((i / l) * 200); //255
+        var color = getRandomColor(); // Get random color from the palette
         drawLine(
           particle.x2d | 0,
           particle.y2d | 0,
           p.x2d | 0,
           p.y2d | 0,
-          lineColorValue,
-          Math.floor(lineColorValue / 1.5),
-          0,
-          255,
+          color[0],
+          color[1],
+          color[2],
+          255, // Use the random color for the line
         );
       }
 
@@ -326,15 +336,6 @@ function render() {
     particles = particles.sort(function (a, b) {
       return b[0].z - a[0].z;
     });
-  }
-}
-
-function softInvert(value) {
-  for (var j = 0, n = data.length; j < n; j += 4) {
-    data[j] = Math.abs(value - data[j]); // red
-    data[j + 1] = Math.abs(value - data[j + 1]); // green
-    data[j + 2] = Math.abs(value - data[j + 2]); // blue
-    data[j + 3] = 255; // - data[ j + 3 ]; // alpha
   }
 }
 
