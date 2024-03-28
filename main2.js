@@ -1,9 +1,6 @@
 import './style2.css';
-// CLICK TO START MUSIC
-// Music "I get so lost" by H2x (Radik Khamatdinov) (https://soundcloud.com/h2x-dev/i-get-so-lost)
-// 3D software fluid cube music visualization
-let { sin, cos, PI } = Math;
 
+let { sin, cos, PI } = Math;
 // Creating canvas and getting 2d context
 let c = document.querySelector('#visualizer').getContext('2d');
 
@@ -13,7 +10,7 @@ let canvas = c.canvas;
 // Common
 let frame = 0;
 let vertices = [];
-let cubeSize = 17;
+let cubeSize = 18;
 
 // Creating HTMLAudioElement
 let audio = new Audio();
@@ -26,12 +23,12 @@ let sr;
 
 // Spectrum array
 let spectrumData;
-let spectrumRenderCount = 30; // How much lines of spectrum will render
+let spectrumRenderCount = 150; // How much lines of spectrum will render
 
 // Rendering visualization
 let oldTimeStamp = performance.now();
 let loop = function (timeStamp = performance.now()) {
-  let rad = (frame / 2 / 180) * PI;
+  let rad = (frame / 4 / 128) * PI;
 
   const dt = (timeStamp - oldTimeStamp) / 1000;
   oldTimeStamp = timeStamp;
@@ -45,10 +42,10 @@ let loop = function (timeStamp = performance.now()) {
     canvas.height = canvas.offsetHeight;
   }
 
-  frame += dt * 50;
+  frame += dt * 80;
   if (an) an.getByteFrequencyData(spectrumData);
   c.fillStyle = `hsl(${frame + 90}deg, 100%, 3%)`;
-  c.globalAlpha = 0.5;
+  c.globalAlpha = 1;
   c.fillRect(0, 0, canvas.width, canvas.height);
   c.globalAlpha = 1;
 
@@ -65,13 +62,8 @@ let loop = function (timeStamp = performance.now()) {
     let z = vertex[2];
 
     // Get distance to center
-    let dist = cubeSize / 2 - Math.sqrt(x ** 2 + y ** 2 + z ** 2);
+    let dist = cubeSize / 3 - Math.sqrt(x ** 2 + y ** 2 + z ** 2);
 
-    // Making sphere by removing unnecessary vertices
-    // if (dist < 0) continue // Uncomment here to make sphere
-
-    // Rotation
-    // Rotation Y
     let tx = x * cos(rad) + sin(rad) * z;
     let tz = -x * sin(rad) + cos(rad) * z;
     let ty = y;
@@ -90,15 +82,15 @@ let loop = function (timeStamp = performance.now()) {
     y = ty;
 
     // Translate cube
-    z -= 70;
+    z -= 80;
 
     // Make reaction on spectrum
     z += value;
-    y += value / 100;
+    y += value / 60;
 
     // Distort animation
-    x += Math.cos(frame / 20 + y / 5);
-    y += Math.sin(frame / 20 + z / 3);
+    x += Math.cos(frame / 40 + y / 5);
+    y += Math.sin(frame / 40 + z / 3);
 
     // Make perspective
     x /= z / canvas.height / 2;
@@ -118,7 +110,7 @@ let loop = function (timeStamp = performance.now()) {
 window.addEventListener(
   'click',
   (e) => {
-    audio.src = './Muziek/test2.mp3';
+    audio.src = '../Muziek/test2.mp3';
 
     audio.oncanplaythrough = function () {
       ac = new AudioContext();
@@ -140,8 +132,6 @@ window.addEventListener(
   { once: true },
 );
 
-// Generation cube
-
 for (let i = 0; i < cubeSize ** 3; i++) {
   let x = i % cubeSize;
   let y = ((i / cubeSize) >> 0) % cubeSize;
@@ -155,5 +145,4 @@ for (let i = 0; i < cubeSize ** 3; i++) {
   vertices.push([x, y, z]);
 }
 
-// Launch visualization
 loop();

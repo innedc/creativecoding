@@ -14,11 +14,6 @@ var context;
 var imageData;
 var data;
 
-var mouseActive = false;
-var mouseDown = false;
-var mousePos = { x: 0, y: 0 };
-var mouseFollowSpeed = 0.015;
-
 var fov = 250;
 var speed = 0.75;
 
@@ -236,9 +231,6 @@ function onResize() {
   canvas.width = w;
   canvas.height = h;
 
-  context.fillStyle = '#000000';
-  context.fillRect(0, 0, w, h);
-
   imageData = context.getImageData(0, 0, w, h);
   data = imageData.data;
 }
@@ -284,7 +276,7 @@ function render() {
 
       if (j > 0) {
         var p = particlesRow[j - 1];
-        var lineColorValue = Math.round((i / l) * 200); //255
+        var lineColorValue = Math.round((i / l) * 255); //255
         drawLine(
           particle.x2d | 0,
           particle.y2d | 0,
