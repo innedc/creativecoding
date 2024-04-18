@@ -79,7 +79,7 @@ function loadAudio() {
 
   // call `handleCanplay` when it music can be played
   audio.addEventListener('canplay', handleCanplay);
-  audio.src = '../Muziek/test.mp3';
+  audio.src = '../Muziek/test2.mp3';
   audio.load();
   running = true;
 }
@@ -224,3 +224,8 @@ function draw(dt) {
 }
 
 draw();
+
+document.addEventListener('DOMContentLoaded', function () {
+  loadAudio();
+  toggleAudio(); // Start playing audio automatically
+});

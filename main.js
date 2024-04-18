@@ -60,8 +60,8 @@ function init() {
 
   onResize();
 
-  addParticles(particles, 20);
-  addParticles(particlesSky, -20);
+  addParticles(particles, 80);
+  addParticles(particlesSky, -80);
 
   render();
   render();
@@ -87,7 +87,7 @@ function userStart() {
 
 function audioSetup() {
   audio = new Audio();
-  audio.src = '../Muziek/test.mp3';
+  audio.src = '../Muziek/test2.mp3';
   audio.controls = false;
   audio.loop = true;
   audio.autoplay = true;
