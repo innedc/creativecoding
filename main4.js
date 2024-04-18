@@ -15,7 +15,7 @@ var imageData;
 var data;
 
 var fov = 250;
-var speed = 0.75;
+var speed = 0.5;
 
 var particles = [];
 var time = 0;
@@ -69,6 +69,14 @@ function audioSetup() {
 
 function audioLoaded(event) {
   txtStatus.style.display = 'none';
+}
+
+function audioBtHandler(event) {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
 }
 
 function clearImageData() {
@@ -180,14 +188,14 @@ function addParticle(x, y, z, audioBufferIndex) {
 }
 
 function addParticles() {
-  var audioBufferIndexMin = 20;
-  var audioBufferIndexMax = 60;
+  var audioBufferIndexMin = 25;
+  var audioBufferIndexMax = 80;
   var audioBufferIndex = audioBufferIndexMin;
 
   var centerPosition = { x: 0, y: 0 };
 
-  for (var z = -fov; z < fov; z += 20) {
-    var coordinates = drawCircle(centerPosition, 0, 200);
+  for (var z = -fov; z < fov; z += 25) {
+    var coordinates = drawCircle(centerPosition, 0, 150);
     var particlesRow = [];
 
     for (var i = 0, l = coordinates.length; i < l; i++) {
@@ -235,24 +243,6 @@ function onResize() {
   data = imageData.data;
 }
 
-function audioBtHandler(event) {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-}
-
-var colors = [
-  [255, 0, 0], // Red
-  [255, 165, 0], // Orange
-  [255, 255, 0], // Yellow
-];
-
-function getRandomColor() {
-  return colors[Math.floor(Math.random() * colors.length)];
-}
-
 function render() {
   var frequencySource;
   if (analyser) {
@@ -286,7 +276,23 @@ function render() {
 
       if (j > 0) {
         var p = particlesRow[j - 1];
-        var color = getRandomColor(); // Get random color from the palette
+        // Define three predetermined colors
+        const colors = [
+          [255, 153, 200],
+          [41, 41, 200],
+          [0, 0, 0],
+        ];
+
+        // Modify getRandomColor() function to return one of the predetermined colors
+        function getRandomColor() {
+          // Generate a random index to select a color from the colors array
+          const randomIndex = Math.floor(Math.random() * colors.length);
+          return colors[randomIndex];
+        }
+
+        // Inside the code block where the color is obtained
+        // Replace var color = getRandomColor(); with:
+        var color = colors[j % colors.length];
 
         drawLine(
           particle.x2d | 0,
@@ -339,7 +345,7 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-window.requestAnimFrame = (function () {
+window.requestAnimFrame = function () {
   return (
     window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -348,6 +354,8 @@ window.requestAnimFrame = (function () {
       window.setTimeout(callback, 1000 / 60);
     }
   );
-})();
+};
 
 init();
+
+audio.play();

@@ -10,7 +10,7 @@ let canvas = c.canvas;
 // Common
 let frame = 0;
 let vertices = [];
-let cubeSize = 18;
+let cubeSize = 12;
 
 // Creating HTMLAudioElement
 let audio = new Audio();
@@ -23,14 +23,14 @@ let sr;
 
 // Spectrum array
 let spectrumData;
-let spectrumRenderCount = 150; // How much lines of spectrum will render
+let spectrumRenderCount = 30; // How much lines of spectrum will render
 
 // Rendering visualization
 let oldTimeStamp = performance.now();
 let loop = function (timeStamp = performance.now()) {
-  let rad = (frame / 4 / 128) * PI;
+  let rad = (frame / 2 / 128) * PI;
 
-  const dt = (timeStamp - oldTimeStamp) / 1000;
+  const dt = (timeStamp - oldTimeStamp) / 800;
   oldTimeStamp = timeStamp;
 
   // Resize canvas
@@ -42,7 +42,7 @@ let loop = function (timeStamp = performance.now()) {
     canvas.height = canvas.offsetHeight;
   }
 
-  frame += dt * 80;
+  frame += dt * 20;
   if (an) an.getByteFrequencyData(spectrumData);
   c.fillStyle = `hsl(${frame + 90}deg, 100%, 3%)`;
   c.globalAlpha = 1;
@@ -52,9 +52,11 @@ let loop = function (timeStamp = performance.now()) {
   c.save();
   c.translate(canvas.width / 2, canvas.height / 2);
 
+  const colors = ['#5aabab', '#b9c94c', '#6c8cbf'];
+
   for (let i = 0; i < vertices.length; i++) {
     let value = spectrumData
-      ? spectrumData[i % spectrumRenderCount] / 10 + 1
+      ? spectrumData[i % spectrumRenderCount] / 6 + 1
       : 0;
     let vertex = vertices[i];
     let x = vertex[0];
@@ -62,7 +64,7 @@ let loop = function (timeStamp = performance.now()) {
     let z = vertex[2];
 
     // Get distance to center
-    let dist = cubeSize / 3 - Math.sqrt(x ** 2 + y ** 2 + z ** 2);
+    let dist = cubeSize / 10 - Math.sqrt(x ** 2 + y ** 2 + z ** 2);
 
     let tx = x * cos(rad) + sin(rad) * z;
     let tz = -x * sin(rad) + cos(rad) * z;
@@ -73,31 +75,30 @@ let loop = function (timeStamp = performance.now()) {
     y = ty;
     z = tz;
 
-    // Rotation Z
-    tx = x * cos(rad) - y * sin(rad);
-    ty = x * sin(rad) + y * cos(rad);
-
     // Apply transform
     x = tx;
     y = ty;
 
     // Translate cube
-    z -= 80;
+    z -= 60;
 
     // Make reaction on spectrum
     z += value;
-    y += value / 60;
+    y += value / 100;
 
     // Distort animation
-    x += Math.cos(frame / 60 + y / 5);
-    y += Math.sin(frame / 60 + z / 3);
+    x += Math.cos(frame / 80 + y / 5);
+    y += Math.sin(frame / 80 + z / 3);
 
     // Make perspective
     x /= z / canvas.height / 2;
     y /= z / canvas.height / 2;
 
+    // Determine color based on vertex index
+    let colorIndex = i % colors.length;
+    c.fillStyle = colors[colorIndex];
+
     // Drawing vertex
-    c.fillStyle = `hsl(${(dist / 16) * 360 + frame}deg, 100%, 50%)`;
     c.fillRect(x - dist / 2, y - dist / 2, dist, dist);
   }
 
