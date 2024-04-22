@@ -10,7 +10,7 @@ let canvas = c.canvas;
 // Common
 let frame = 0;
 let vertices = [];
-let cubeSize = 12;
+let cubeSize = 11;
 
 // Creating HTMLAudioElement
 let audio = new Audio();
@@ -23,7 +23,7 @@ let sr;
 
 // Spectrum array
 let spectrumData;
-let spectrumRenderCount = 30; // How much lines of spectrum will render
+let spectrumRenderCount = 20; // How much lines of spectrum will render
 
 // Rendering visualization
 let oldTimeStamp = performance.now();
@@ -80,7 +80,7 @@ let loop = function (timeStamp = performance.now()) {
     y = ty;
 
     // Translate cube
-    z -= 60;
+    z -= 65;
 
     // Make reaction on spectrum
     z += value;
@@ -108,7 +108,7 @@ let loop = function (timeStamp = performance.now()) {
 };
 
 // Connecting analyser to audio
-audio.src = '../Muziek/test2.mp3';
+audio.src = '../Muziek/giocosa-3.mp3';
 audio.oncanplaythrough = function () {
   ac = new AudioContext();
   sr = ac.createMediaElementSource(audio);

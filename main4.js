@@ -52,7 +52,7 @@ function userStart() {
 
 function audioSetup() {
   audio = new Audio();
-  audio.src = '../Muziek/test2.mp3';
+  audio.src = '../Muziek/test3.mp3';
   audio.controls = false;
   audio.loop = true;
   audio.autoplay = true;
@@ -191,7 +191,7 @@ function addParticle(x, y, z, audioBufferIndex) {
 }
 
 function addParticles() {
-  var audioBufferIndexMin = 25;
+  var audioBufferIndexMin = 50;
   var audioBufferIndexMax = 80;
   var audioBufferIndex = audioBufferIndexMin;
 
@@ -281,8 +281,8 @@ function render() {
         var p = particlesRow[j - 1];
         // Define three predetermined colors
         const colors = [
-          [255, 153, 200],
-          [41, 41, 200],
+          [252, 109, 39],
+          [178, 4, 86],
           [0, 0, 0],
         ];
 
