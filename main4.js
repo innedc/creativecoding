@@ -52,7 +52,7 @@ function userStart() {
 
 function audioSetup() {
   audio = new Audio();
-  audio.src = '../Muziek/test3.mp3';
+  audio.src = '../Muziek/fly-me-to-the-moon.mp3';
   audio.controls = false;
   audio.loop = true;
   audio.autoplay = true;

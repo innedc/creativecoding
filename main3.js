@@ -79,7 +79,7 @@ function loadAudio() {
 
   // call `handleCanplay` when it music can be played
   audio.addEventListener('canplay', handleCanplay);
-  audio.src = '../Muziek/test2.mp3';
+  audio.src = '../Muziek/country-roads.mp3';
   audio.load();
   running = true;
 }
