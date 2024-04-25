@@ -16,18 +16,18 @@ ctx.lineCap = '';
 
 var nextV = Math.random() * 40;
 var lastV = Math.random() * -40;
-var vCounter = 0;
+var vCounter = 10;
 var vAngle = 6;
 var colorScale = 0;
 var nextC = 20;
 
 Run();
 function Run() {
-  vCounter = (vCounter + 1) % nextC;
+  vCounter = (vCounter + 2) % nextC;
 
   if (vCounter == 0) {
     lastV = nextV;
-    nextV = Math.random() * 40 * (lastV > 0 ? -1 : 1);
+    nextV = Math.random() * 28 * (lastV > 0 ? -2 : 2);
     nextC = Math.round(Math.random() * 6) + 4;
   }
 
@@ -40,18 +40,10 @@ function Run() {
   var newA1 = Math.sin(vAngle * (Math.PI / 2));
   var newA2 = Math.sin((1 - vAngle) * (Math.PI / 2));
 
-  var newX0 = (192 + (newWidth > 0 ? 8 : -8) + newWidth) * newA1;
-  var newY0 = (192 + (newWidth > 0 ? 8 : -8) + newWidth) * newA2;
-
   var newX1 = (192 + newWidth) * newA1;
   var newY1 = (192 + newWidth) * newA2;
   var newX2 = (192 - newWidth) * newA1;
   var newY2 = (192 - newWidth) * newA2;
-
-  ctx.beginPath();
-  ctx.arc(256 + newX0, 256 + newY0, 1, 0, 2 * Math.PI);
-  ctx.fillStyle = '#a1a1a1';
-  ctx.fill();
 
   ctx.beginPath();
   ctx.moveTo(256 + newX1, 256 + newY1);

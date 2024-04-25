@@ -230,40 +230,6 @@ function onResize() {
   data = imageData.data;
 }
 
-//---
-
-function mouseDownHandler(event) {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-}
-
-function mouseEnterHandler(event) {
-  mouseActive = true;
-}
-
-function mouseLeaveHandler(event) {
-  mouseActive = false;
-
-  mousePos.x = w / 2;
-
-  mouseDown = false;
-}
-
-function mouseMoveHandler(event) {
-  mousePos = getMousePos(canvas, event);
-}
-
-function getMousePos(canvas, event) {
-  var rect = canvas.getBoundingClientRect();
-
-  return { x: event.clientX - rect.left, y: event.clientY - rect.top };
-}
-
-//---
-
 function render() {
   var frequencySource;
 
@@ -319,16 +285,16 @@ function render() {
       if (j > 0) {
         var p = particlesRow[j - 1];
 
-        lineColorValue = Math.round((i / l) * 155); //255
+        lineColorValue = Math.round((i / l) * 255); //255
 
         drawLine(
           particle.x2d | 0,
           particle.y2d | 0,
           p.x2d | 0,
           p.y2d | 0,
-          0,
-          lineColorValue,
-          0,
+          200,
+          147,
+          187,
           255,
         );
       }
@@ -341,9 +307,9 @@ function render() {
           particle.y2d | 0,
           pB.x2d | 0,
           pB.y2d | 0,
-          0,
-          lineColorValue,
-          0,
+          106,
+          54,
+          94,
           255,
         );
       }
@@ -408,9 +374,9 @@ function render() {
           particle.y2d | 0,
           p.x2d | 0,
           p.y2d | 0,
-          0,
-          Math.round(lineColorValue / 2),
-          lineColorValue,
+          169,
+          201,
+          140,
           255,
         );
       }
@@ -423,9 +389,9 @@ function render() {
           particle.y2d | 0,
           pB.x2d | 0,
           pB.y2d | 0,
-          0,
-          Math.round(lineColorValue / 2),
-          lineColorValue,
+          101,
+          139,
+          66,
           255,
         );
       }
@@ -438,14 +404,6 @@ function render() {
     particlesSky = particlesSky.sort(function (a, b) {
       return b[0].z - a[0].z;
     });
-  }
-
-  //---
-
-  if (mouseActive) {
-    center2D.x += (mousePos.x - center2D.x) * 0.015;
-  } else {
-    center2D.x += (canvas.width / 2 - center2D.x) * 0.015;
   }
 }
 

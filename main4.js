@@ -281,8 +281,8 @@ function render() {
         var p = particlesRow[j - 1];
         // Define three predetermined colors
         const colors = [
-          [252, 109, 39],
-          [178, 4, 86],
+          [245, 121, 9],
+          [201, 66, 105],
           [0, 0, 0],
         ];
 
