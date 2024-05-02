@@ -15,7 +15,7 @@ h1 {
   font-weight: bold;
   text-align: center;
   z-index: 2;
-  margin-top: -50%;
+  margin-top: -47%;
 }
 
 p {
@@ -24,7 +24,7 @@ p {
   font-size: 20px;
   font-weight: 300;
   text-align: center;
-  margin-top: 90px;
+  margin-top: 85px;
 }
 
 canvas {

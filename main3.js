@@ -1,4 +1,7 @@
 import './style3.css';
+import timer from './timer.js';
+
+timer();
 
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');

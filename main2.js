@@ -1,4 +1,7 @@
 import './style2.css';
+import timer from './timer.js';
+
+timer();
 
 let { sin, cos, PI } = Math;
 // Creating canvas and getting 2d context
