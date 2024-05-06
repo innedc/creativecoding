@@ -176,7 +176,7 @@ function addParticle(x, y, z, index) {
 
 function addParticles(array, dir) {
   var audioBufferIndexMin = 8;
-  var audioBufferIndexMax = 512;
+  var audioBufferIndexMax = 1024;
   var audioBufferIndex = audioBufferIndexMin;
 
   for (var z = -fov; z < fov; z += 5) {
@@ -186,9 +186,9 @@ function addParticles(array, dir) {
       var yPos = 0;
 
       if (dir > 0) {
-        yPos = Math.random() * 10 + particleDistanceTop;
+        yPos = Math.random() * 50 + particleDistanceTop;
       } else {
-        yPos = Math.random() * 10 - particleDistanceTop;
+        yPos = Math.random() * 50 - particleDistanceTop;
       }
 
       var particle = addParticle(x, yPos, z, audioBufferIndex);
