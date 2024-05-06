@@ -1,4 +1,7 @@
 import './style2.css';
+import timer from './timer.js';
+
+timer();
 
 let { sin, cos, PI } = Math;
 // Creating canvas and getting 2d context
@@ -52,7 +55,7 @@ let loop = function (timeStamp = performance.now()) {
   c.save();
   c.translate(canvas.width / 2, canvas.height / 2);
 
-  const colors = ['#5aabab', '#b9c94c', '#6c8cbf'];
+  const colors = ['#ff69cc', '#ffffff', '#0000ed', '#ff932e', '#833f00'];
 
   for (let i = 0; i < vertices.length; i++) {
     let value = spectrumData

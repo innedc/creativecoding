@@ -9,22 +9,28 @@ body {
 
 h1 {
   color: white;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 64px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-transform: uppercase;
   font-weight: bold;
   text-align: center;
+  z-index: 2;
+  margin-top: -50%;
 }
 
 p {
   color: white;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 20px;
+  font-weight: 300;
   text-align: center;
+  margin-top: 85px;
 }
 
 canvas {
-  width: 512px;
-  height: 512px;
+  width: 640px;
+  height: 640px;
+  margin-top: 4%;
 }
 
 #canvas {

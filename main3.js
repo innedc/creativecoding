@@ -1,4 +1,7 @@
 import './style3.css';
+import timer from './timer.js';
+
+timer();
 
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
@@ -125,8 +128,8 @@ function drawLine(points) {
       points[i].x,
       points[i].y,
     );
-    gradient.addColorStop(0, 'rgba(255,192,203,0.5)'); // Light pink
-    gradient.addColorStop(1, 'rgba(255,20,147,0.5)'); // Deep pink
+    gradient.addColorStop(0, 'rgba(225,247,245,0.5)'); // Light pink
+    gradient.addColorStop(1, 'rgba(14,70,163,0.5)'); // Deep pink
 
     ctx.beginPath();
     ctx.strokeStyle = gradient;
@@ -138,11 +141,6 @@ function drawLine(points) {
     origin = points[i];
     // Increase line width
     ctx.lineWidth = 3;
-
-    // Add more color variation to the gradient
-    gradient.addColorStop(0, 'rgba(255, 0, 255, 0.5)'); // Magenta
-    gradient.addColorStop(0.5, 'rgba(0, 255, 255, 0.5)'); // Cyan
-    gradient.addColorStop(1, 'rgba(255, 255, 0, 0.5)'); // Yellow
   }
 }
 

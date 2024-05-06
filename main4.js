@@ -1,4 +1,8 @@
 import './style4.css';
+import timer from './timer.js';
+
+timer();
+
 var audio, audioContext, audioSrc;
 var analyser, analyserBufferLength;
 
@@ -281,8 +285,8 @@ function render() {
         var p = particlesRow[j - 1];
         // Define three predetermined colors
         const colors = [
-          [252, 109, 39],
-          [178, 4, 86],
+          [245, 121, 9],
+          [201, 66, 105],
           [0, 0, 0],
         ];
 
