@@ -3,6 +3,6 @@ export default function timer() {
     () => {
       location.href = 'index.html';
     },
-    6 * 60 * 1000,
+    2 * 60 * 1000,
   );
 }
