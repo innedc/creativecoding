@@ -44,7 +44,7 @@ Op de plank is er een gat voorzien voor de draden van de Raspberry.
 
 ## Valkuil
 
-Een valkuil ligt bij de trillen. Hiervoor hadden we een gsm gebruikt maar die was te zwak om de trilllingen deftig te laten doorkomen. Achteraf gezien was het beter geweest als we meerdere gsm’s hadden. Om zo het trillen te versterken.
+Een valkuil ligt bij de trilligen. Hiervoor hadden we een gsm gebruikt maar die was te zwak om de trilllingen deftig te laten doorkomen. Achteraf gezien was het beter geweest als we meerdere gsm’s hadden. Om zo het trillen te versterken.
 
 ## Tip
 
