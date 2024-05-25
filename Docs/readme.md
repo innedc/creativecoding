@@ -13,3 +13,39 @@ De nummers die Astrid gespeeld heeft zijn:
 2. Fly me to the moon - Frank Sinatra
 3. Sonata giocosa III - Joaquin Rodrigo
 4. La Caterdral II - Barrios Mangoré
+
+## Video
+
+## Benodigheden
+
+- Raspberry Pi
+- Visual Studio Code
+- Node Red
+- Joystick
+- 3 mm houte doos
+- Beamer
+- Externe speaker
+
+## Code
+
+## NodeRed
+
+## Makercase
+
+Voor de joystick hebben we een doos gemaakt met www.makercase.com en de makerspace van AP.
+Via Illustrator hebben we een plank toegevoegd waar we onze raspberry op kunnen plaatsen. Onder de plank is er plaats voorzien om een laptop in te zetten met een gat aan de zijkant voor de kabels van de beamer.
+
+![Makercase file 1](/Docs/makercase1.png)
+
+Ook is er een gat aan de bovenkant in het midden toegevoegd om de joystick in te steken.
+Op de plank is er een gat voorzien voor de draden van de Raspberry.
+
+![Makercase file 2](/Docs/makercase2.png)
+
+## Valkuil
+
+Een valkuil ligt bij de trillen. Hiervoor hadden we een gsm gebruikt maar die was te zwak om de trilllingen deftig te laten doorkomen. Achteraf gezien was het beter geweest als we meerdere gsm’s hadden. Om zo het trillen te versterken.
+
+## Tip
+
+Als je ook trillingen met een gsm wilt toevoegen dan is het aan te raden om meerder gsm’s te gebruiken.
