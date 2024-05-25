@@ -1,5 +1,7 @@
 # Synesthopia
 
+![Synesthopia](/Docs/Synesthopia.png)
+
 ## Concept
 
 Synesthopia is een interactieve muziekvisualisatie gemaakt voor mensen die slechthorend of doof zijn. De muziek wordt omgezet in visuele voorstelling met kleur en bewegingen. Deze bewegingen geven het ritme van de nummers aan.
