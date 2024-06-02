@@ -30,6 +30,32 @@ De nummers die Astrid gespeeld heeft zijn:
 
 ## Code
 
+Ons project bestaat uit een webapplicatie met een startscherm en vier verschillende muziekvisualisaties, verdeeld over vijf pagina's. Voor elke visualisatie is er een aparte set van HTML-, CSS- en JavaScript-bestanden. De bestanden die bij een specifieke visualisatie horen, zijn genummerd zodat ze gemakkelijk te identificeren zijn. Elk bestand eindigt met hetzelfde nummer om de bijbehorende visualisatie aan te duiden.
+
+Enkele belangrijke code's:
+
+- geluidsvolume analyseren
+
+```html
+async function getMicrophone(callback) {   const stream = await
+navigator.mediaDevices.getUserMedia({ audio: true, video: false })  
+audioContext = new AudioContext();   analyser = audioContext.createAnalyser();  
+microphone = audioContext.createMediaStreamSource(stream);   javascriptNode =
+audioContext.createScriptProcessor(2048, 1, 1);   analyser.smoothingTimeConstant
+= 0.8;   analyser.fftSize = 1024;   microphone.connect(analyser);  
+analyser.connect(javascriptNode);  
+javascriptNode.connect(audioContext.destination);  
+javascriptNode.onaudioprocess = function() {     let array = new
+Uint8Array(analyser.frequencyBinCount);    
+analyser.getByteFrequencyData(array);     let values = 0;     let length =
+array.length;     for (let i = 0; i < length; i++) {       values += (array[i]);
+    }     let average = values / length;     if (callback) callback(average);  
+} } let lastValue = 0; function microphoneSuccess(volume) {  
+console.log(volume);   lastValue = volume; } getMicrophone(microphoneSuccess);
+setInterval(()=> {   document.getElementById("meter").textContent=lastValue;  
+window.navigator.vibrate([lastValue*1.5]) }, 200)
+```
+
 ## NodeRed
 
 ## Makercase
@@ -46,7 +72,7 @@ Op de plank is er een gat voorzien voor de draden van de Raspberry.
 
 ## Valkuil
 
-Een valkuil ligt bij de trilligen. Hiervoor hadden we een gsm gebruikt maar die was te zwak om de trilllingen deftig te laten doorkomen. Achteraf gezien was het beter geweest als we meerdere gsm’s hadden. Om zo het trillen te versterken.
+Een valkuil ligt bij de trillingen. Hiervoor hadden we een gsm gebruikt maar die was te zwak om de trillingen deftig te laten doorkomen. Achteraf gezien was het beter geweest als we meerdere gsm’s hadden. Om zo het trillen te versterken.
 
 ## Tip
 
