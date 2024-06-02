@@ -34,11 +34,69 @@ Ons project bestaat uit een webapplicatie met een startscherm en vier verschille
 
 Enkele belangrijke code's:
 
+- WebSocket-verbinding
+- timerfunctie
 - geluidsvolume analyseren
 
-### Geluidsvolume analyseren
+### Websocket-verbinding
 
-Hier is een uitleg van een JavaScript-functie die je microfoon gebruikt om het geluidsvolume te analyseren:
+De onderstaande JavaScript-code creëert een WebSocket-verbinding die reageert op joystickbewegingen door de gebruiker naar verschillende webpagina's te leiden. Wanneer de joystick naar boven, rechts, beneden of links wordt bewogen, wordt respectievelijk pagina 1, 2, 3 of 4 geladen. Dit is in combinatie met de Node red
+
+```javascript
+function startWebsocket() {
+  var ws = new WebSocket('ws://192.168.100.1:1880/websocket');
+
+  ws.onmessage = function (e) {
+    //console.log('websocket message event:', e);
+    const data = e.data;
+    console.log(data);
+
+    if (data === 'up') {
+      window.location.href = 'page1.html';
+    }
+
+    if (data === 'right') {
+      window.location.href = 'page2.html';
+    }
+
+    if (data === 'down') {
+      window.location.href = 'page3.html';
+    }
+
+    if (data === 'left') {
+      window.location.href = 'page4.html';
+    }
+  };
+
+  ws.onclose = function () {
+    // connection closed, discard old websocket and create a new one in 5s
+    ws = null;
+    setTimeout(startWebsocket, 5000);
+  };
+}
+
+startWebsocket();
+```
+
+### Timerfunctie
+
+De functie `timer`, die wordt geëxporteerd als de standaardfunctionaliteit, zorgt ervoor dat na een bepaalde tijd de gebruiker automatisch wordt doorgestuurd naar de hoofdpagina, 'index.html'. Specifiek, nadat twee minuten zijn verstreken, wordt de huidige pagina automatisch herladen en vervangen door de hoofdpagina. Dit wordt bereikt door een timer in te stellen die na de opgegeven tijd de actie uitvoert.
+
+```Javascript
+export default function timer() {
+  setTimeout(
+    () => {
+      location.href = 'index.html';
+    },
+    2 * 60 * 1000,
+  );
+}
+
+```
+
+### Geluidsvolume analyseren (Externe code)
+
+Hier is een uitleg van een JavaScript-functie die je microfoon gebruikt om het geluidsvolume te analyseren. Word uitgevoerd op een externe GSM:
 
 De `getMicrophone` functie gebruikt een API om toegang te krijgen tot je microfoon en vraagt om een audiostream. Het creëert een AudioContext, maakt een AnalyserNode en een MediaStreamSource aan, en gebruikt een ScriptProcessorNode voor audioprocessing.
 
