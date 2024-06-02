@@ -36,24 +36,71 @@ Enkele belangrijke code's:
 
 - geluidsvolume analyseren
 
+### Geluidsvolume analyseren
+
+Hier is een uitleg van een JavaScript-functie die je microfoon gebruikt om het geluidsvolume te analyseren:
+
+De `getMicrophone` functie gebruikt een API om toegang te krijgen tot je microfoon en vraagt om een audiostream. Het creëert een AudioContext, maakt een AnalyserNode en een MediaStreamSource aan, en gebruikt een ScriptProcessorNode voor audioprocessing.
+
+De analyser verzamelt frequentiegegevens en berekent het gemiddelde volume van het geluid, dat wordt doorgegeven aan een callback-functie. Een globale variabele `lastValue` slaat het laatst gemeten volume op en de `microphoneSuccess` functie logt dit naar de console.
+
+Elke 200 milliseconden wordt de gemeten waarde weergegeven in een HTML-element met id "meter" en trilt het apparaat op basis van het gemeten volume, aangepast met een factor van 1.5.
+
+Hieronder zie je de HTML en Javascript
+
 ```html
-async function getMicrophone(callback) {   const stream = await
-navigator.mediaDevices.getUserMedia({ audio: true, video: false })  
-audioContext = new AudioContext();   analyser = audioContext.createAnalyser();  
-microphone = audioContext.createMediaStreamSource(stream);   javascriptNode =
-audioContext.createScriptProcessor(2048, 1, 1);   analyser.smoothingTimeConstant
-= 0.8;   analyser.fftSize = 1024;   microphone.connect(analyser);  
-analyser.connect(javascriptNode);  
-javascriptNode.connect(audioContext.destination);  
-javascriptNode.onaudioprocess = function() {     let array = new
-Uint8Array(analyser.frequencyBinCount);    
-analyser.getByteFrequencyData(array);     let values = 0;     let length =
-array.length;     for (let i = 0; i < length; i++) {       values += (array[i]);
-    }     let average = values / length;     if (callback) callback(average);  
-} } let lastValue = 0; function microphoneSuccess(volume) {  
-console.log(volume);   lastValue = volume; } getMicrophone(microphoneSuccess);
-setInterval(()=> {   document.getElementById("meter").textContent=lastValue;  
-window.navigator.vibrate([lastValue*1.5]) }, 200)
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script defer="module" src="/main.js"></script>
+  </head>
+  <body>
+    <div id="meter"></div>
+  </body>
+</html>
+```
+
+```javascript
+async function getMicrophone(callback) {
+  const stream = await navigator.mediaDevices.getUserMedia({
+    audio: true,
+    video: false,
+  });
+  audioContext = new AudioContext();
+  analyser = audioContext.createAnalyser();
+  microphone = audioContext.createMediaStreamSource(stream);
+  javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+  analyser.smoothingTimeConstant = 0.8;
+  analyser.fftSize = 1024;
+  microphone.connect(analyser);
+  analyser.connect(javascriptNode);
+  javascriptNode.connect(audioContext.destination);
+  javascriptNode.onaudioprocess = function () {
+    let array = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(array);
+    let values = 0;
+    let length = array.length;
+    for (let i = 0; i < length; i++) {
+      values += array[i];
+    }
+    let average = values / length;
+    if (callback) callback(average);
+  };
+}
+let lastValue = 0;
+function microphoneSuccess(volume) {
+  console.log(volume);
+  lastValue = volume;
+}
+getMicrophone(microphoneSuccess);
+setInterval(() => {
+  document.getElementById('meter').textContent = lastValue;
+  window.navigator.vibrate([lastValue * 1.5]);
+}, 200);
 ```
 
 ## NodeRed
