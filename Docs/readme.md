@@ -37,21 +37,21 @@ De nummers die Astrid gespeeld heeft zijn:
 
 #### Eerst start je met het coderen van:
 
-- startscherm
-- de audiovisualisaties
-- timeoutfunctie
+- Startscherm
+- De audiovisualisaties
+- Timeoutfunctie
 
 #### Nadien maak je alles klaar om de joystick te laten werken.
 
 Je voert uit:
 
-- de node-red
-- ws code
+- De node-red
+- Ws code
 
 #### Het codeerwerk voor de visualisatie is dan klaar. Nu moeten er externe dingen gebeuren zoals:
 
-- het maken van een box om de raspberry PI in te steken
-- de externe code voor de gsm _(de trillingen)_
+- Het maken van een box om de raspberry PI in te steken
+- De externe code voor de gsm _(de trillingen)_
 
 Nadien is alles klaar en kan je genieten van de installatie
 
@@ -62,9 +62,9 @@ Ons project bestaat uit een webapplicatie met een startscherm en vier verschille
 Enkele belangrijke code's:
 
 - WebSocket-verbinding
-- timerfunctie
-- audioSetup
-- geluidsvolume analyseren
+- Timerfunctie
+- AudioSetup
+- Geluidsvolume analyseren
 
 ### Websocket-verbinding
 
