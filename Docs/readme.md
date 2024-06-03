@@ -123,7 +123,7 @@ function audioSetup() {
 
 ### Geluidsvolume analyseren (Externe code)
 
-Hier is een uitleg van een JavaScript-functie die je microfoon gebruikt om het geluidsvolume te analyseren. Word uitgevoerd op een externe GSM:
+Hier is een uitleg van een JavaScript-functie die je microfoon gebruikt om het geluidsvolume te analyseren. Word uitgevoerd op een externe GSM en is dus een aparte file:
 
 De `getMicrophone` functie gebruikt een API om toegang te krijgen tot je microfoon en vraagt om een audiostream. Het creëert een AudioContext, maakt een AnalyserNode en een MediaStreamSource aan, en gebruikt een ScriptProcessorNode voor audioprocessing.
 
@@ -189,6 +189,8 @@ setInterval(() => {
 ```
 
 ## NodeRed
+
+![Makercase file 2](/Docs/Nodered.png)
 
 ## Makercase
 
