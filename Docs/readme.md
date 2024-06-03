@@ -25,6 +25,7 @@ De nummers die Astrid gespeeld heeft zijn:
 - Node Red
 - Joystick
 - 3 mm houte doos
+- Oude gsm(s)
 - Beamer
 - Externe speaker
 
