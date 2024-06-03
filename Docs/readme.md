@@ -36,11 +36,12 @@ Enkele belangrijke code's:
 
 - WebSocket-verbinding
 - timerfunctie
+- audioSetup
 - geluidsvolume analyseren
 
 ### Websocket-verbinding
 
-De onderstaande JavaScript-code creëert een WebSocket-verbinding die reageert op joystickbewegingen door de gebruiker naar verschillende webpagina's te leiden. Wanneer de joystick naar boven, rechts, beneden of links wordt bewogen, wordt respectievelijk pagina 1, 2, 3 of 4 geladen. Dit is in combinatie met de Node red
+De onderstaande JavaScript-code creëert een WebSocket-verbinding die reageert op joystickbewegingen door de gebruiker naar verschillende webpagina's te leiden. Wanneer de joystick naar boven, rechts, beneden of links wordt bewogen, wordt respectievelijk pagina 1, 2, 3 of 4 geladen. Dit is in combinatie met de Node red.
 
 ```javascript
 function startWebsocket() {
@@ -92,6 +93,32 @@ export default function timer() {
   );
 }
 
+```
+
+### AudioSetup
+
+De `audioSetup` functie maakt een audio-element, stelt de bron in, schakelt bedieningsknoppen uit, en zorgt ervoor dat het automatisch herhaald en afgespeeld wordt. Een AudioContext wordt gecreëerd om audio te beheren, en een Analyser-node wordt toegevoegd om de audio te analyseren. Deze Analyser-node wordt verbonden met de audio-uitvoer en ingesteld voor vloeiende analyse. Tot slot wordt het audio-element als bron verbonden met de Analyser zodat de audio geanalyseerd kan worden terwijl het wordt afgespeeld.
+
+```javascript
+function audioSetup() {
+  audio = new Audio();
+  audio.src = '../Muziek/fly-me-to-the-moon.mp3';
+  audio.controls = false;
+  audio.loop = true;
+  audio.autoplay = true;
+  audio.crossOrigin = 'anonymous';
+  audio.addEventListener('canplaythrough', audioLoaded, false);
+  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+  analyser = audioContext.createAnalyser();
+  analyser.connect(audioContext.destination);
+  analyser.smoothingTimeConstant = 0.65;
+  analyser.fftSize = 512 * 32; //circleSegments * 32;
+  analyserBufferLength = analyser.frequencyBinCount;
+
+  audioSrc = audioContext.createMediaElementSource(audio);
+  audioSrc.connect(analyser);
+}
 ```
 
 ### Geluidsvolume analyseren (Externe code)
