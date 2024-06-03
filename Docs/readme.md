@@ -18,7 +18,7 @@ De nummers die Astrid gespeeld heeft zijn:
 
 ## Video
 
-[![Synesthopia Video](https://www.youtube.com/embed/psrsyGY7RPM?si=TFjPQWcsGoeLOk4Y")]
+[![Synesthopia Video](/Docs/YoutubeThumbnail.png)](https://www.youtube.com/watch?v=psrsyGY7RPM)
 
 ## Benodigheden
 
