@@ -50,8 +50,8 @@ Je voert uit:
 
 #### Het codeerwerk voor de visualisatie is dan klaar. Nu moeten er externe dingen gebeuren zoals:
 
-- het creeren van een box om de installatie in te steken
-- de externe code van de gsm voor de trillingen
+- het maken van een box om de raspberry PI in te steken
+- de externe code voor de gsm _(de trillingen)_
 
 Nadien is alles klaar en kan je genieten van de installatie
 
@@ -68,7 +68,7 @@ Enkele belangrijke code's:
 
 ### Websocket-verbinding
 
-De onderstaande JavaScript-code creëert een WebSocket-verbinding die reageert op joystickbewegingen door de gebruiker naar verschillende webpagina's te leiden. Wanneer de joystick naar boven, rechts, beneden of links wordt bewogen, wordt respectievelijk pagina 1, 2, 3 of 4 geladen. Dit is in combinatie met de Node red.
+De onderstaande JavaScript-code creëert een WebSocket-verbinding die reageert op joystickbewegingen. Deze leid de gebruiker naar verschillende webpagina's. Wanneer de joystick naar boven, rechts, beneden of links wordt bewogen, wordt respectievelijk pagina 1, 2, 3 of 4 geladen. Dit verkrijg je door de code te combineren met Node red.
 
 ```javascript
 function startWebsocket() {
