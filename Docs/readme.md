@@ -35,24 +35,27 @@ De nummers die Astrid gespeeld heeft zijn:
 
 ### Stappenplan Installatie:
 
-#### Begin met coderen:
+Stappenplan Installatie:
 
-- Startscherm
-- Audiovisualisaties
-- Timeoutfunctie
+#### Eerst start je met het coderen van:
 
-#### Maak alles klaar voor de joystick:
+- startscherm
+- de audiovisualisaties
+- timeoutfunctie
 
-- Voer uit:
-  - Node-RED
-  - VS Code
+#### nadien maak je alles klaar om de joystick te laten werken.
 
-#### Rond het codeerwerk voor de visualisatie af:
+Je voert uit:
 
-- Creëer een box om de installatie in te plaatsen
-- Schrijf de externe code voor de GSM-trillingen
+- de node-red
+- ws code
 
-Nu is alles klaar en kun je genieten van de installatie!
+#### het codeerwerk voor de visualisatie is dan klaar. Nu moeten er externe dingen gebeuren zoals:
+
+- het creeren van een box om de installatie in te steken
+- de externe code van de gsm voor de trillingen
+
+Nadien is alles klaar en kan je genieten van de installatie
 
 ## Code
 
